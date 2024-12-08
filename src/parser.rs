@@ -26,9 +26,22 @@ pub fn parse_body(text: &str) -> AocStats {
         .map(|el| el.inner_html(parser).trim_start().to_string())
         .filter_map(|t| t.parse().ok())
         .collect();
-    assert_eq!(stats_both.len(), 25, "wrong number of elements found matching both querysel");
-    assert_eq!(stats_firstonly.len(), 25, "wrong number of elements found matching firstonly querysel");
-    for (idx, (statboth, statfirstonly)) in stats_both.iter().rev().zip(stats_firstonly.iter().rev()).enumerate() {
+    assert_eq!(
+        stats_both.len(),
+        25,
+        "wrong number of elements found matching both querysel"
+    );
+    assert_eq!(
+        stats_firstonly.len(),
+        25,
+        "wrong number of elements found matching firstonly querysel"
+    );
+    for (idx, (statboth, statfirstonly)) in stats_both
+        .iter()
+        .rev()
+        .zip(stats_firstonly.iter().rev())
+        .enumerate()
+    {
         result[idx].both = *statboth;
         result[idx].firstonly = *statfirstonly;
     }
