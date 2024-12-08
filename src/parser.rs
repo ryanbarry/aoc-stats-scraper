@@ -1,7 +1,6 @@
 use crate::{AocStats, DailyStats};
 
 pub fn parse_body(text: &str) -> AocStats {
-    println!("parsing {} chars", text.chars().count());
     let mut result: AocStats = [DailyStats {
         both: 0,
         firstonly: 0,
@@ -30,7 +29,6 @@ pub fn parse_body(text: &str) -> AocStats {
     assert_eq!(stats_both.len(), 25, "wrong number of elements found matching both querysel");
     assert_eq!(stats_firstonly.len(), 25, "wrong number of elements found matching firstonly querysel");
     for (idx, (statboth, statfirstonly)) in stats_both.iter().rev().zip(stats_firstonly.iter().rev()).enumerate() {
-        println!("parsing day {idx}");
         result[idx].both = *statboth;
         result[idx].firstonly = *statfirstonly;
     }
